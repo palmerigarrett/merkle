@@ -1,7 +1,7 @@
 export default async function SubmitForm(props) {
   const {reqBody} = props
   const fullDomain = window.location.href
-  const domain = fullDomain.split('/').slice(0,3).join('/')
+  const domain = fullDomain.split('/').slice(0,4).join('/')
   console.log('domain', domain)
   const url = 'https://ql0ugv7001.execute-api.us-east-1.amazonaws.com/dev/register'
   const requestType = 'POST'
