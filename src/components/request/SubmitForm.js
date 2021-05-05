@@ -9,7 +9,6 @@ export default async function SubmitForm(props) {
     method: requestType,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': domain,
       'Access-Control-Allow-Credentials': true,
     },
     body: JSON.stringify(reqBody),
