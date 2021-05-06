@@ -10,8 +10,8 @@ export default async function SubmitForm(props) {
     method: requestType,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Credentials': true,
     },
+    mode: 'cors', // this is new
     body: JSON.stringify(reqBody),
   })
   const res = await response.json()
