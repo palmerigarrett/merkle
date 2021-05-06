@@ -1,6 +1,6 @@
-export default async function SubmitForm(props) {
+export default async function SubmitForm(reqBody) {
   // FIXME: Adjust to take in all request types.
-  const {reqBody} = props
+  // const {reqBody} = props
   console.log('reqBody', reqBody)
   const fullDomain = window.location.href
   const domain = fullDomain.split('/').slice(0,3).join('/')

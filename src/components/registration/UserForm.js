@@ -54,12 +54,24 @@ function UserForm() {
     e.preventDefault()
     const id = e.target.id
     const val = e.target.value
-
+    console.log('id', id)
+    console.log('val', val)
     setFormState({
       ...formState,
       [id] : val,
     })
+  }
 
+  const handleStateSelect = (e) => {
+    e.preventDefault()
+    const name = e.target.name
+    const val = e.target.value
+    console.log('name', name)
+    console.log('val', val)
+    setFormState({
+      ...formState,
+      [name] : val,
+    })
   }
 
   function validateForm() {
@@ -105,6 +117,7 @@ function UserForm() {
   function handleSubmit() {
     const isValid = true
     if (isValid) {
+      console.log(formState)
       SubmitForm(formState)
       setFormState(initialFormState)
       setConfirmState(true)
@@ -168,10 +181,10 @@ function UserForm() {
                     {validState.zip ? '' : errorState.zip}
                   </Form.Text>
                   <Form.Label>State: </Form.Label>
-                  <Form.Control onChange={handleInputChange} as='select'>
+                  <Form.Control  name='state' value={formState.state} onChange={handleStateSelect} as='select'>
                     <option id='state' value='default'>Please Select a State</option>
                     {states.map(state =>
-                      <option id='state' value={formState.state} key={state}>{state}</option>
+                      <option key={state}>{state}</option>
                     )}
                   </Form.Control>
                   <Form.Text className="warningText" muted>
