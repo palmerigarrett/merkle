@@ -9,7 +9,7 @@ function App() {
       <Router>
         <div id='container'>
           <Switch>
-            <Route path='/merkle/admin'>
+            <Route path='/admin'>
               <DisplayUsers />
             </Route>
             <Route exact path='/merkle'>
