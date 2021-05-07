@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/merkle/static/css/main.7e79b6d6.chunk.css",
-    "main.js": "/merkle/static/js/main.4fa6ac5a.chunk.js",
-    "main.js.map": "/merkle/static/js/main.4fa6ac5a.chunk.js.map",
+    "main.js": "/merkle/static/js/main.cfce301e.chunk.js",
+    "main.js.map": "/merkle/static/js/main.cfce301e.chunk.js.map",
     "runtime-main.js": "/merkle/static/js/runtime-main.3eda3842.js",
     "runtime-main.js.map": "/merkle/static/js/runtime-main.3eda3842.js.map",
     "static/css/2.ef9168ec.chunk.css": "/merkle/static/css/2.ef9168ec.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.ef9168ec.chunk.css",
     "static/js/2.24865e6b.chunk.js",
     "static/css/main.7e79b6d6.chunk.css",
-    "static/js/main.4fa6ac5a.chunk.js"
+    "static/js/main.cfce301e.chunk.js"
   ]
 }
