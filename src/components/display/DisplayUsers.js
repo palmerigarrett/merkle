@@ -63,7 +63,7 @@ function DisplayUsers() {
                 <td className='usersCell'>{user.state["S"]}</td>
                 <td className='usersCell'>{user.zipcode["S"]}</td>
                 <td className='usersCell'>{user.country["S"]}</td>
-                <td className='usersCell'>{convertTimestamp(user.created_date["S"])}</td>
+                <td className='usersCell'>{convertTimestamp(user.created_date["N"])}</td>
               </tr>  
             )}
           </tbody>
