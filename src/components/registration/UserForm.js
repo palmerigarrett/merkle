@@ -2,7 +2,6 @@ import React from 'react'
 import '../../App.css'
 
 import fetchRequest from '../request/fetchRequest'
-import DisplayUsers from '../display/DisplayUsers'
 
 import validString from '../utils/validString'
 import validZip from '../utils/validZip'
