@@ -151,11 +151,6 @@ function UserForm() {
     setConfirmState(false)
   }
 
-  if (url.includes('admin')) {
-    console.log('hit')
-    return <DisplayUsers />
-  }
-
   return (
     <>
       <Modal
