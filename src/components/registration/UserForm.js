@@ -2,6 +2,7 @@ import React from 'react'
 import '../../App.css'
 
 import fetchRequest from '../request/fetchRequest'
+import DisplayUsers from '../display/DisplayUsers'
 
 import validString from '../utils/validString'
 import validZip from '../utils/validZip'
@@ -13,7 +14,7 @@ import Form from 'react-bootstrap/Form'
 import Modal from 'react-bootstrap/Modal'
 import Row from 'react-bootstrap/Row'
 
-const {useState} = React
+const {useState, useEffect} = React
 
 function UserForm() {
   const initialFormState = {
@@ -40,7 +41,9 @@ function UserForm() {
   const [validState, setValidState] = useState(initialValidState)
   const [errorState, setErrorState] = useState(initialFormState)
   const [confirmState, setConfirmState] = useState(false)
+  const [loadedState, setLoadedState] = useState(false)
   const [error, setError] = useState('')
+  const url = window.location.href
 
   const states = [
     'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
@@ -138,14 +141,20 @@ function UserForm() {
   function handleCancel() {
     setFormState(initialFormState)
   }
+  
 
-  // if (confirmState) {
-  //   return <Confirmation close={closeModal()}/>
-  //   // return <Button onClick={() => {window.location.reload()}}>success</Button>
-  // }
+  useEffect(() => {
+    console.log(url)
+    console.log(typeof(url))
+  })
 
   function closeModal() {
     setConfirmState(false)
+  }
+
+  if (url.includes('admin')) {
+    console.log('hit')
+    return <DisplayUsers />
   }
 
   return (
