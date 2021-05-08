@@ -28,9 +28,10 @@ function DisplayUsers() {
       } else {
         console.log(data)
         setUsers(data.res.users)
-        
+        // fixme: add loaded state
       }
     }
+
     fetchUsers()
   }, [])
 

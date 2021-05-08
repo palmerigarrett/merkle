@@ -12,7 +12,7 @@ function App() {
             <Route exact path='/admin'>
               <DisplayUsers />
             </Route>
-            <Route exact path='/'>
+            <Route exact path='/merkle'>
               <UserForm />
             </Route>
           </Switch>
