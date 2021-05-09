@@ -12,7 +12,7 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Row from 'react-bootstrap/Row'
 
-const {useState, useEffect} = React
+const {useState} = React
 
 function UserForm() {
   const initialFormState = {
@@ -40,9 +40,15 @@ function UserForm() {
   const [errorState, setErrorState] = useState(initialFormState)
   const [confirmState, setConfirmState] = useState(false)
   const [error, setError] = useState('')
-
+  const initialModalObj = {
+    message: '',
+    header: '',
+    buttonText: '',
+    variant: ''
+  }
+  const [modalObj, setModalObj] = useState(initialModalObj)
   const states = [
-    'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
+    'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC', 'FL','GA',
     'GU','HI','ID','IL','IN','IA','KS','KY','LA','ME','MH','MD','MA',
     'MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND',
     'MP','OH','OK','OR','PW','PA','PR','RI','SC','SD','TN','TX','UT',
@@ -119,9 +125,21 @@ function UserForm() {
     const data = await fetchRequest({url: route, body: requestBody, type: 'POST'})
     if (data.error) {
       setError(data.error)
+      setModalObj({
+        message: 'Oops, there seems to have been an error.',
+        header: 'Try again.',
+        buttonText: 'Retry',
+        variant: 'danger'
+      })
     } else {
       setFormState(initialFormState)
       setConfirmState(true)
+      setModalObj({
+        message: 'Thanks for submitting a new user!.',
+        header: 'Create Another User',
+        buttonText: 'Create New User',
+        variant: 'dark'
+      })
     }
   }
 
@@ -164,6 +182,14 @@ function UserForm() {
 
   return (
     <>
+      <Confirmation
+        show={confirmState || error}
+        message={modalObj.message}
+        header={modalObj.header}
+        close={closeModal}
+        button={modalObj.buttonText}
+        variant={modalObj.variant}
+      />
       <Container fluid>
         <Row className="justify-content-md-center">
           <h1>Submit User Info</h1>
