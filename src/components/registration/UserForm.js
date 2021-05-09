@@ -2,7 +2,7 @@ import React from 'react'
 import '../../App.css'
 
 import fetchRequest from '../request/fetchRequest'
-
+import Confirmation from '../confirmation/Confirmation'
 import validString from '../utils/validString'
 import validZip from '../utils/validZip'
 
@@ -10,7 +10,6 @@ import Button from 'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
-import Modal from 'react-bootstrap/Modal'
 import Row from 'react-bootstrap/Row'
 
 const {useState, useEffect} = React
@@ -40,9 +39,7 @@ function UserForm() {
   const [validState, setValidState] = useState(initialValidState)
   const [errorState, setErrorState] = useState(initialFormState)
   const [confirmState, setConfirmState] = useState(false)
-  const [loadedState, setLoadedState] = useState(false)
   const [error, setError] = useState('')
-  const url = window.location.href
 
   const states = [
     'AL','AK','AS','AZ','AR','CA','CO','CT','DE','DC','FM','FL','GA',
@@ -51,8 +48,6 @@ function UserForm() {
     'MP','OH','OK','OR','PW','PA','PR','RI','SC','SD','TN','TX','UT',
     'VT','VI','VA','WA','WV','WI','WY'
    ];
-
-
 
   const handleInputChange = (e) => {
     e.preventDefault()
@@ -123,7 +118,7 @@ function UserForm() {
 
     const data = await fetchRequest({url: route, body: requestBody, type: 'POST'})
     if (data.error) {
-      setError(data.errorMessage)
+      setError(data.error)
     } else {
       setFormState(initialFormState)
       setConfirmState(true)
@@ -140,40 +135,35 @@ function UserForm() {
   function handleCancel() {
     setFormState(initialFormState)
   }
-  
-
-  useEffect(() => {
-    console.log(url)
-    console.log(typeof(url))
-  })
 
   function closeModal() {
     setConfirmState(false)
   }
 
+  if (error) {
+    return <Confirmation
+            show={error}
+            message='Oops, there seems to have been an error.'
+            header='Try again.'
+            close={closeModal}
+            button='Retry'
+            variant='danger'
+            />
+  }
+
+  if (confirmState) {
+    return <Confirmation
+            show={confirmState}
+            message='Thanks for submitting a new user!'
+            header='Create Another User'
+            close={closeModal}
+            button='Create New User'
+            variant='dark'
+            />
+  }
+
   return (
     <>
-      <Modal
-        show={confirmState}
-        onHide={closeModal}
-        backdrop="static"
-        keyboard={false}
-        animation={false}
-      >
-        <Modal.Header>
-          Submission Confirmed
-        </Modal.Header>
-        <Modal.Body>
-          <p>
-            Thanks for submitting a new user!
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={closeModal}>
-            Create Another User
-          </Button>
-        </Modal.Footer>
-      </Modal>
       <Container fluid>
         <Row className="justify-content-md-center">
           <h1>Submit User Info</h1>

@@ -1,13 +1,15 @@
 import './App.css';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route} from 'react-router-dom'
 import UserForm from './components/registration/UserForm'
 
 function App() {
   return (
     <>
-      <Route path='/merkle'>
-        <UserForm />
-      </Route>
+      <Router>
+        <Route path='/merkle'>
+          <UserForm />
+        </Route>
+      </Router>
     </>
   );
 }
