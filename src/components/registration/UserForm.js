@@ -158,28 +158,6 @@ function UserForm() {
     setConfirmState(false)
   }
 
-  if (error) {
-    return <Confirmation
-            show={error}
-            message='Oops, there seems to have been an error.'
-            header='Try again.'
-            close={closeModal}
-            button='Retry'
-            variant='danger'
-            />
-  }
-
-  if (confirmState) {
-    return <Confirmation
-            show={confirmState}
-            message='Thanks for submitting a new user!'
-            header='Create Another User'
-            close={closeModal}
-            button='Create New User'
-            variant='dark'
-            />
-  }
-
   return (
     <>
       <Confirmation
